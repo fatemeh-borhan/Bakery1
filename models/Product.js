@@ -12,22 +12,23 @@ const productSchema = new Schema({
       type:Number,
       required:true
   },
+ 
+  description:  
+  {
+      type:String,
+      required:true
+  },
   quantity:
   {
     type:Number,
     required:true
 
   },
-  description:  
-  {
-      type:String,
-      required:true
-  },
 
-  // taxable:{
-  //   type=Boolean,
-  //   required:true
-  // },
+  taxable : {
+    type=Boolean,
+    //required:true
+  },
 
   dateCreated :
   {
@@ -37,6 +38,6 @@ const productSchema = new Schema({
 
 });
 
-const productModel =mongoose.model("Sanaz",productSchema);
+const productModel =mongoose.model("Product",productSchema);
 
 module.exports=productModel;

@@ -16,8 +16,8 @@ router.post("/add",(req,res)=>
     const newProduct=
     {
         title:req.body.title,
-        description : req.body.description,
         price : req.body.price,
+        description : req.body.description,
         quantity : req.body.quantity,
         taxable : req.body.taxable
     }
