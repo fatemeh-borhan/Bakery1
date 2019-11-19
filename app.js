@@ -2,6 +2,7 @@ const express= require("express");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const methodOverride = require('method-override');
 
 require("dotenv").config({path:'./config/keys.env'});
 const productRoutes = require("./routes/Product");

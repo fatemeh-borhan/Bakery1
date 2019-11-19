@@ -26,7 +26,7 @@ router.post("/add",(req,res)=>
         .then(()=>{
             console.log(`Product was added to the database`);
             console.log(`${product}`);
-            res.redirect("/Product/list");
+            res.redirect("/list");
         
         })
         .catch(err=>console.log(`Error : ${err}`));

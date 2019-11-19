@@ -1,21 +1,22 @@
-{{!-- <h2>Product Listing</h2>
+<h2>Product Listing</h2>
  
  <section class="products-container">
      {{#each lists}} 
      <div>
-        <a href="/product{{this._id}}">{{this.title}}</a> &nbsp;&nbsp;
+        <p>{{this.title}}
         <a href="/product/edit/{{this._id}}">Edit</a>
+        </p>
     </div>
     {{else}}
         No product in database 
      {{/each}}
-</section> --}}
+</section>
 
-<h2>product listing </h2>
+{{!-- <h2>product listing </h2>
  
  <div class="products_list">
 {{#each lists}}    
 <p>{{product.title}}</p><a href="/list/edit/{{product._id}}">edit</a>
 {{/each}}
 
-</div>
+</div> --}}
