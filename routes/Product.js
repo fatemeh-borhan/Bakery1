@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const Task = require("../models/Product");
+const Product= require("../models/Product");
 
 router.get("/",(req,res)=>
 {
@@ -21,8 +21,6 @@ router.post("/add",(req,res)=>
         quantity : req.body.quantity,
         taxable : req.body.taxable
     }
-
-    
         const product = new Product(newProduct)
         product.save()
         .then(()=>{
@@ -34,5 +32,64 @@ router.post("/add",(req,res)=>
         .catch(err=>console.log(`Error : ${err}`));
   
 });
+router.get("/list",(req,res)=>
+ {
+
+    Product.find()
+     .then((product)=>{
+       res.render("Product/productList",
+        {
+            lists:product
+        });
+    })
+    .catch(err=>console.log(`Error : ${err}`));
+});
+router.get("/profile/:id",(req,res)=>{
+
+    Product.findById(req.params.id)
+    .then((product)=>{
+        res.render("Product/productProfile",{
+            productDocument:product
+        })
+    })
+    .catch(err=>console.log(`Error : ${err}`));
+})
+
+
+//Route to direct user to the task profile page
+router.get("/edit/:id",(req,res)=>{
+
+    Product.findById(req.params.id)
+    .then((product)=>{
+        res.render("Product/productEditForm",{
+            productDocument:product
+        })
+    })
+    .catch(err=>console.log(`Error : ${err}`));
+})
+
+
+//Route to direct user to edit task form
+router.put("/edit/:id",(req,res)=>
+{
+    Product.findById(req.params.id)
+    .then((product)=>{
+
+        product.title=req.body.title;
+        product.description=req.body.description;
+        product.price=req.body.price;
+        product.quantity=req.body.quantity;
+
+        product.save()
+
+        .then(()=>{
+           res.redirect("/list") 
+        })
+        .catch(err=>console.log(`Error : ${err}`));
+
+    })
+    .catch(err=>console.log(`Error : ${err}`));
+});
+
 
 module.exports=router;

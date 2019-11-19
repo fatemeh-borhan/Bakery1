@@ -37,6 +37,6 @@ const productSchema = new Schema({
 
 });
 
-const productModel =mongoose.model("Product",productSchema);
+const productModel =mongoose.model("Sanaz",productSchema);
 
 module.exports=productModel;
